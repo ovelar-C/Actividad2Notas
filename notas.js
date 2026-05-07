@@ -1,11 +1,13 @@
 function test(notas, bonus, respuestaEsperada) {
     try {
         const analisis = calcularELDestinoDelAlumno(notas, bonus);
+        console.log("--------------")
         if (analisis === respuestaEsperada) {
-            return console.log("test correctisimo");
+            return console.log("test pasó correctamente");
         } else {
-            return console.log("test fallo D;");
+            return console.log("test falló");
         }
+        
     } catch (error) {
         console.error(error);
     }
@@ -13,9 +15,8 @@ function test(notas, bonus, respuestaEsperada) {
 
 function calcularELDestinoDelAlumno(notas, bonus) {
     try {
-        if (!validarInputs(notas, bonus)) {
-            return console.log("error en la entrada de datos");
-        }
+        if (!validarInputs(notas, bonus)) return false
+        
         const notaFinal = calcularPromedio(notas, bonus);
 
         if (notaFinal < 4) {
@@ -55,7 +56,7 @@ test([7,7,7], false, "PROMOCIONA"); //promedio 8, PROMOCIONA test correcto
 test([6,6,6], true, "PROMOCIONA"); //promedio 6, PROMOCIONA (6+1) test correcto
 test([3,3,3], true,"RECURSA"); //promedio 3, RECURSA test correcto
 test([10,10], true, "PROMOCIONA") // porque dos notas
-test(["fe"],false,"RECURSA");
+test(["fe"],false,"RECURSA"); // error en la entrada de datos
 
 
 
