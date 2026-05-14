@@ -1,6 +1,6 @@
 function test(notas, bonus, respuestaEsperada) {
     try {
-        const analisis = calcularELDestinoDelAlumno(notas, bonus);
+        const analisis = calcularInstanciaAlumno(notas, bonus);
         console.log("--------------")
         if (analisis === respuestaEsperada) {
             return console.log("test pasó correctamente");
@@ -13,7 +13,7 @@ function test(notas, bonus, respuestaEsperada) {
     }
 }
 
-function calcularELDestinoDelAlumno(notas, bonus) {
+function calcularInstanciaAlumno(notas, bonus) {
     try {
         if (!validarInputs(notas, bonus)) return false
         
@@ -22,7 +22,7 @@ function calcularELDestinoDelAlumno(notas, bonus) {
         if (notaFinal < 4) {
             return "RECURSA";
         } else if (notaFinal >= 4 && notaFinal < 7) {
-            return "APROBADO";
+            return "EXAMEN";
         } else {
             return "PROMOCIONA";
         }
@@ -56,7 +56,7 @@ test([7,7,7], false, "PROMOCIONA"); //promedio 8, PROMOCIONA test correcto
 test([6,6,6], true, "PROMOCIONA"); //promedio 6, PROMOCIONA (6+1) test correcto
 test([3,3,3], true,"RECURSA"); //promedio 3, RECURSA test correcto
 test([10,10], true, "PROMOCIONA") // porque dos notas
-test(["fe"],false,"RECURSA"); // error en la entrada de datos
+test(["fe"],false,false); // error en la entrada de datos entonces es false esperado y mando false
 
 
 
